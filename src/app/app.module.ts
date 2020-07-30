@@ -4,13 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ShoppingReducer } from './reducer';
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    StoreModule.forRoot({
+      tutorial: ShoppingReducer // tutorial.module.ts
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
