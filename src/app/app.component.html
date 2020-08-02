@@ -4,7 +4,10 @@ Current day: <br>
     <li>
         {{myObject.currentDay}}  <!-- ...| async -->
     </li>
-    <button (click)='plus()'>PLUS</button>
+    <button (click)='plus()' *ngIf=buttonPlusState()>PLUS</button> (pon -> ndz)<br><br>
+    <button (click)='minus()' *ngIf=buttonMinusState()>MINUS</button> (ndz -> pon)<br><br>
+    <button (click)='refresh()'>REFRESH</button> (localStorage clear)
+
 </ol>
 
 

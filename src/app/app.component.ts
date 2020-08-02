@@ -7,7 +7,7 @@ import { AppState } from './AppState';
 import { v4 as uuid } from 'uuid'; // uuid to biblioteka, mozemy w niej wygenerowac unikalny identyfikator id
 // import { AddItemAction } from './actions';
 
-import { PLUS} from './reducer';
+import { PLUS, MINUS} from './reducer';
 import { Tutorial } from './tutorial.model';
 
 
@@ -26,14 +26,36 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.store.select(state => this.myObject = state); // NOK
-    this.store.select(state => state).subscribe(x => this.myObject = x); // NOK
-    // this.store.select('day').subscribe(x => this.myObject = x); // NOK - day
+
+    this.store.subscribe(x => this.myObject = x); // NOK
   }
 
   plus() {
-
-   //this.store.dispatch(new TutorialActions.AddItemAction(index)); // ??? jaki typ
   this.store.dispatch({ type: PLUS });
   }
+
+  minus() {
+   this.store.dispatch({ type: MINUS });
+   }
+
+  buttonPlusState(): boolean {
+    if ((JSON.parse(localStorage.getItem('status'))) < 6) {
+      return true;
+    } else return false;
+  }
+
+  buttonMinusState(): boolean {
+    if ((JSON.parse(localStorage.getItem('status'))) >= 0) {
+      return true;
+    } else return false;
+  }
+ 
+  refresh() {
+    localStorage.clear();
+  }
 }
+
+
+
+
 
