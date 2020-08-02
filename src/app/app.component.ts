@@ -19,18 +19,16 @@ import { Tutorial } from './tutorial.model';
 
 export class AppComponent implements OnInit {
 
-  tutorials: Observable<string>;
+  // tutorials: Observable<string>;
+  myObject: Tutorial; // Observable<Tutorial>
 
-  constructor(private store: Store<Tutorial>) {
-    // this.tutorials = this.store.select('tutorial');
-    this.tutorials = this.store.select(state => state.currentDay);
-    console.log('tutorials (z html):', this.tutorials);
-  }
+  constructor(private store: Store<Tutorial>) { }
 
   ngOnInit() {
-
+    // this.store.select(state => this.myObject = state); // NOK
+    this.store.select(state => state).subscribe(x => this.myObject = x); // NOK
+    // this.store.select('day').subscribe(x => this.myObject = x); // NOK - day
   }
- // plus = () => this.store.dispatch({ type: PLUS });
 
   plus() {
 
@@ -38,3 +36,4 @@ export class AppComponent implements OnInit {
   this.store.dispatch({ type: PLUS });
   }
 }
+

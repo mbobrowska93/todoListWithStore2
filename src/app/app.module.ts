@@ -17,7 +17,7 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot({
-      tutorial: ShoppingReducer // tutorial.module.ts
+      day: ShoppingReducer // tutorial.module.ts
     })
   ],
   providers: [],

@@ -1,5 +1,5 @@
 export interface Tutorial {
-    days: Array<string>;
+    days: string[];
     currentDay: string;
     id: number;
 }

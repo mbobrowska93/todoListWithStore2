@@ -16,11 +16,15 @@ const initialState: Tutorial = {
 export function ShoppingReducer(state: Tutorial = initialState, action: Action) {
     switch (action.type) {
       case  PLUS:
+    
         let indeks = state.id + 1;
+        if (state.id > 6) {
+          indeks == 0 ;
+        }
         let myDay = state.days[indeks];
         console.log('state after PLUS', state);
-        return { ...state, id: indeks }; // OK !!!
-       
+        state = { ...state, id: indeks, currentDay: myDay }; // OK !!!
+        return state;
 
       default:
         console.log('default state:', state);
